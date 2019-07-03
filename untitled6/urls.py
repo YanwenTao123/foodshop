@@ -19,6 +19,8 @@ from show.views import *
 from django.views.static import serve
 from untitled6.settings import STATIC_ROOT
 
+from book.views import book
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r"^static/(?P<path>.*)$", serve, {"document_root": STATIC_ROOT}),
@@ -28,4 +30,7 @@ urlpatterns = [
     url(r"^reservation/",reservation,name="reservation"),
     url(r"^team/",team,name="team"),
     url(r"^specail/",specail,name="specail"),
+
+    #订单处理
+    url(r'book/',book,name="bookHandler")
 ]
