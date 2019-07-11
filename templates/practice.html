@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {{ range }}
+    <hr>
+    {{ nums }}
+    <hr>
+    {{ page }}
+    <hr>
+    {% if menu.has_previous and pageNum != 1 %}
+        <a href="">上一页</a>
+    {% endif %}
+    {%   for i in rangek %}
+        <a href="/levelmsg/{{ i }}">{{ i }}</a>
+    {% endfor %}
+    {% if menu.has_next %}
+        <a href="">下一页</a>
+    {% endif %}
+    <div>当前页数：{{ pageNum }}  总共页数：{{ page }}</div>
+</body>
+</html>

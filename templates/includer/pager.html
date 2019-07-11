@@ -1,0 +1,20 @@
+{% if book_page.has_previous %}
+    <a href="/bookmanage.html?p={{ book_page.previous_page_number }}">上一页</a>
+{% else %}
+    <a href="#">上一页</a>
+{% endif %}
+
+{% for i in book_page.paginator.page_list_show %}
+    {% if i == current_page%}
+        <a style="font-size: 40px;" href="/bookmanage.html?p={{ i }}">{{ i }}</a>
+    {% else %}
+        <a href="/bookmanage.html?p={{ i }}">{{ i }}</a>
+    {% endif %}
+{% endfor %}
+
+{% if book_page.has_next %}
+    <a href="/bookmanage.html?p={{ book_page.next_page_number }}">下一页</a>
+{% else %}
+    <a href="#">下一页</a>
+{% endif %}
+

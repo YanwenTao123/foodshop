@@ -16,21 +16,38 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from show.views import *
+from usersetting.views import *
 from django.views.static import serve
-from untitled6.settings import STATIC_ROOT
+# from untitled6.settings import STATIC_ROOT
 
 from book.views import book
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r"^static/(?P<path>.*)$", serve, {"document_root": STATIC_ROOT}),
+    # url(r"^static/(?P<path>.*)$", serve, {"document_root": STATIC_ROOT}),
     url(r"^about/",about,name="about"),
-    url(r"^index/",about,name="index"),
+    url(r"^index/",index,name="index"),
     url(r"^menu/",menu,name="menu"),
     url(r"^reservation/",reservation,name="reservation"),
     url(r"^team/",team,name="team"),
     url(r"^specail/",specail,name="specail"),
+    url(r"^login/",login,name="login"),
+    url(r"^phonelogin/",phonelogin,name="phonelogin"),
+    url(r"^loginout",loginout,name="loginout"),
+    url(r"^register/",register,name="register"),
+    url(r"^personsetting/",personsetting,name="personsetting"),
+    url(r"^leavemsg",leavemsg,name="leavemsg"),
+    # url(r"^levelmsg",levelmsg,name="levelmsg"),
 
     #订单处理
-    url(r'book/',book,name="bookHandler")
+    url(r'book/',book,name="bookHandler"),
+    url(r"bookmanage/$",levelMsg1,name="bookmanage"),
+    url(r"bookmanage.html",levelMsg1,name="bookmanage"),
+
+    url(r"^robot/",chat,name="chat"),
+
+    # 互亿验证码
+    url(r"^huyi/",huyi,name="huyi"),
+    url(r"^forgetpassword/",forgetpassword,name="forgetpassword"),
+    url(r"^practice/",practice,name="practice")
 ]

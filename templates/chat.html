@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block chat %}
+    <div class="container box">
+        <div class="msg_show">
+            {% for i in allMsg %}
+
+                {% if i.from_who == username %}
+                    <span>
+                        <span style="margin-right: 10px">{{ i.add_time }}</span>
+                        <span style="margin-right: 10px">{{ i.from_who }} </span>
+                        <span>{{ i.msg }}</span>
+                    </span>
+                {% else %}
+                    <span style="margin-left: 400px">
+                        <span>{{ i.msg }}</span>
+                        <span style="margin-left: 10px"> {{ i.from_who }}</span>
+                        <span style="margin-right: 10px">{{ i.add_time }}</span>
+                    </span>
+                {% endif %}
+
+                <br>
+            {% endfor %}
+        </div>
+        <div class="msg_send">
+            <form action="{% url "chat" %}" method="POST">
+                <input type="text" name="msg">
+                <input type="submit" value="提交">
+            </form>
+        </div>
+    </div>
+{% endblock %}

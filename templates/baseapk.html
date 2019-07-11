@@ -68,54 +68,38 @@
 	</div>
 	
  	
-</div>
-    <div id="canvas-overlay"></div>
+</div>	<div id="canvas-overlay"></div>
 	<div class="boxed-page">
 		<nav id="navbar-header" class="navbar navbar-expand-lg">
-    <div class="container">
-        <a class="navbar-brand navbar-brand-center d-flex align-items-center p-0 only-mobile" href="/">
-            <img src="{% static "/img/logo.png" %}" alt="">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="lnr lnr-menu"></span>
-        </button>
+            <div class="container">
+                <a class="navbar-brand navbar-brand-center d-flex align-items-center p-0 only-mobile" href="/">
+                    <img src="{% static "/img/logo.png" %}" alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="lnr lnr-menu"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+                    <ul class="navbar-nav d-flex justify-content-between">
+                        <li class="nav-item only-desktop">
+                            <a class="nav-link" id="side-nav-open" href="#">
+                                <span class="lnr lnr-menu"></span>
+                            </a>
+                        </li>
+                        <div class="d-flex flex-lg-row flex-column">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url "about" %}">About</a>
+                            </li>
 
-        <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
-            <ul class="navbar-nav d-flex justify-content-between">
-                <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="{% url "login" %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          {% if username %}
-                              @ {{ username }}
-                          {% else %}
-                              @【登录】
-                          {% endif %}
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            {% for i in user_module %}
-                                <a class="dropdown-item" href="{{ i.website }}">{{ i.name }}</a>
-                            {% endfor %}
-                        </div>
-                    </li>
-                <li class="nav-item only-desktop">
-                    <a class="nav-link" id="side-nav-open" href="#">
-                        <span class="lnr lnr-menu"></span>
-                    </a>
-                </li>
-                <div class="d-flex flex-lg-row flex-column">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{% url "index" %}">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url "about" %}">About</a>
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Special Dishes
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item" href="{% url "specail" %}">{{ specail_food.0.food_name }}</a>
-                          <a class="dropdown-item" href="{% url "specail" %}">{{ specail_food.1.food_name }}</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  Special Dishes
+                                </a>
+                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="{% url "specail" %}">Beef Steak Sauce</a>
+                          <a class="dropdown-item" href="{% url "specail" %}">Salmon Zucchini</a>
                         </div>
                     </li>
                 </div>
@@ -182,14 +166,7 @@
 	    </div>
 	    <div class="col-lg-6 hero-right">
 	    	<div class="owl-carousel owl-theme hero-carousel">
-                {% for i in breakfast %}
-                    <div class="item">
-			    	    <img class="img-fluid" src="{{ i.food_img }}" alt="">
-			        </div>
-                {% endfor %}
-                <!--
-                <div class="item">
-{#			    	<img class="img-fluid" src="{% static "/img/hero-2.jpg" %}" alt="">#}
+			    <div class="item">
 			    	<img class="img-fluid" src="{% static "/img/news/breakfast/breakfast1.jpg" %}" alt="">
 			    </div>
 			    <div class="item">
@@ -199,8 +176,6 @@
 			    <div class="item">
 			    	<img class="img-fluid" src="{% static "/img/news/breakfast/breakfast3.jpg" %}" alt="">
 			    </div>
-			    -->
-
 			</div>
 	    </div>
 	</div>
@@ -223,19 +198,27 @@
                         </h2>
                     </div>
                     <div class="pl-lg-5 ml-md-5">
-                        <p>
-                            当一部恐怖电影变得非常可怕时，闭上眼睛是行不通的，要做的事情就是把手指放在耳朵里。也许这对每个人都不起作用，但对我来说一个恐怖的粉丝，他感觉像是一种痛苦而不是刺激的悬念紧张，这就是诀窍。当事情变得非常安静并且你知道跳跃的恐慌即将到来时，阻止伴随着突然咬牙切齿的怪物或刀子闪烁的音频提示可以让你的心率降低，或者至少阻止你大声尖叫。
-                        </p>
+                        <p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
                         <h3 class="mt-5">Special Recipe</h3>
                         <div class="row">
-                            {% for i in dinner %}
-                                <div class="col-4">
+                            <div class="col-4">
                                 <a href="#" class="thumb-menu">
-                                    <img class="img-fluid img-cover" src="{{ i.food_img }}" />
-                                    <h6>{{ i.food_name }}</h6>
+                                    <img class="img-fluid img-cover" src="{% static "img/hero-1.jpg" %}" />
+                                    <h6>Australian Organic Beef</h6>
                                 </a>
                             </div>
-                            {% endfor %}
+                            <div class="col-4">
+                                <a href="#" class="thumb-menu">
+                                    <img class="img-fluid img-cover" src="{% static "img/hero-1.jpg" %}" />
+                                    <h6>Australian Organic Beef</h6>
+                                </a>
+                            </div>
+                            <div class="col-4">
+                                <a href="#" class="thumb-menu">
+                                    <img class="img-fluid img-cover" src="{% static "img/hero-1.jpg" %}"/>
+                                    <h6>Australian Organic Beef</h6>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -259,22 +242,14 @@
                 <div class="col-lg-5 col-md-6 align-self-center py-5">
                     <h2 class="special-number">01.</h2>
                     <div class="dishes-text">
-                        <h3><span>{{ specail_food.0.food_name }}</span><br>
-                            {%  if specail_food.0.food_kinds == "0"  %}
-                                早饭
-                            {% elif specail_food.0.food_kinds == "1" %}
-                                中饭
-                            {% else %}
-                                晚餐
-                            {% endif %}
-                        </h3>
-                        <p class="pt-3">{{ specail_food.0.food_desc }}</p>
-                        <h3 class="special-dishes-price">${{ specail_food.0.food_price }}</h3>
+                        <h3><span>Beef</span><br> Steak Sauce</h3>
+                        <p class="pt-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, ea vero alias perferendis quas animi doloribus voluptates. Atque explicabo ea nesciunt provident libero qui eum, corporis esse quos excepturi soluta?</p>
+                        <h3 class="special-dishes-price">$15.00</h3>
                         <a href="#" class="btn-primary mt-3">book a table</a>
                     </div>
                 </div>
                 <div class="col-lg-5 offset-lg-2 col-md-6 align-self-center mt-4 mt-md-0">
-                    <img src="{{ specail_food.0.food_img }}" alt="" class="img-fluid shadow w-100">
+                    <img src="{% static "/img/steak.jpg" %}" alt="" class="img-fluid shadow w-100">
                 </div>
             </div>
             <div class="row mt-5">
@@ -284,15 +259,9 @@
                 <div class="col-lg-5 offset-lg-2 col-md-6 align-self-center order-1 order-md-2 py-5">
                     <h2 class="special-number">02.</h2>
                     <div class="dishes-text">
-                        <h3><span>{{ specail_food.1.food_name }}</span><br> {%  if specail_food.0.food_kinds == "0"  %}
-                                早饭
-                            {% elif specail_food.0.food_kinds == "1" %}
-                                中饭
-                            {% else %}
-                                晚餐
-                            {% endif %}</h3>
-                        <p class="pt-3">{{ specail_food.1.food_desc }}</p>
-                        <h3 class="special-dishes-price">${{ specail_food.1.food_price }}</h3>
+                        <h3><span>Salmon</span><br> Zucchini</h3>
+                        <p class="pt-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, accusamus culpa quam amet ipsam odit ea doloremque accusantium quo, itaque possimus eius. In a quis quibusdam omnis atque vero dolores!</p>
+                        <h3 class="special-dishes-price">$12.00</h3>
                         <a href="#" class="btn-primary mt-3">book a table <span><i class="fa fa-long-arrow-right"></i></span></a>
                     </div>
                 </div>
@@ -321,74 +290,163 @@
                     <div class="heading-menu">
                         <h3 class="text-center mb-5">Breakfast</h3>
                     </div>
-                    {% for i in breakfast %}
-                        <div class="menus d-flex align-items-center">
-                            <div class="menu-img rounded-circle">
-                                <img class="img-fluid" src="{{ i.food_img }}" alt="">
-                            </div>
-                            <div class="text-wrap">
-                                <div class="row align-items-start">
-                                    <div class="col-8">
-                                        <h4>{{ i.food_name }}</h4>
-                                    </div>
-                                    <div class="col-4">
-                                        <h4 class="text-muted menu-price">${{ i.food_price }}</h4>
-                                    </div>
-                                </div>
-                                <p>{{ i.food_cooker }}</p>
-                            </div>
+                    <div class="menus d-flex align-items-center">
+                        <div class="menu-img rounded-circle">
+                            <img class="img-fluid" src="{% static "/img/breakfast-1.jpg" %}" alt="">
                         </div>
-                    {% endfor %}
+                        <div class="text-wrap">
+                            <div class="row align-items-start">
+                                <div class="col-8">
+                                    <h4>Egg Sandwich</h4>
+                                </div>
+                                <div class="col-4">
+                                    <h4 class="text-muted menu-price">$30</h4>
+                                </div>
+                            </div>
+                            <p>Meat Ball, Mie</p>
+                        </div>
+                    </div>
+                    <div class="menus d-flex align-items-center">
+                        <div class="menu-img rounded-circle">
+                            <img class="img-fluid" src="{% static "/img/breakfast-1.jpg" %}" alt="">
+                        </div>
+                        <div class="text-wrap">
+                            <div class="row align-items-start">
+                                <div class="col-8">
+                                    <h4>Egg Sandwich</h4>
+                                </div>
+                                <div class="col-4">
+                                    <h4 class="text-muted menu-price">$30</h4>
+                                </div>
+                            </div>
+                            <p>Meat Ball, Mie</p>
+                        </div>
+                    </div>
+                    <div class="menus d-flex align-items-center">
+                        <div class="menu-img rounded-circle">
+                            <img class="img-fluid" src="{% static "/img/breakfast-1.jpg" %}" alt="">
+                        </div>
+                        <div class="text-wrap">
+                            <div class="row align-items-start">
+                                <div class="col-8">
+                                    <h4>Egg Sandwich</h4>
+                                </div>
+                                <div class="col-4">
+                                    <h4 class="text-muted menu-price">$30</h4>
+                                </div>
+                            </div>
+                            <p>Meat Ball, Mie</p>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="col-lg-4 menu-wrap">
                     <div class="heading-menu">
                         <h3 class="text-center mb-5">Breakfast</h3>
                     </div>
-                    {% for i in lunch %}
-                        <div class="menus d-flex align-items-center">
-                            <div class="menu-img rounded-circle">
-                                <img class="img-fluid" src="{{ i.food_img }}" alt="">
-                            </div>
-                            <div class="text-wrap">
-                                <div class="row align-items-start">
-                                    <div class="col-8">
-                                        <h4>{{ i.food_name }}</h4>
-                                    </div>
-                                    <div class="col-4">
-                                        <h4 class="text-muted menu-price">${{ i.food_price }}</h4>
-                                    </div>
-                                </div>
-                                <p>{{ i.food_cooker }}</p>
-                            </div>
+                    <div class="menus d-flex align-items-center">
+                        <div class="menu-img rounded-circle">
+                            <img class="img-fluid" src="{% static "/img/breakfast-1.jpg" %}" alt="">
                         </div>
-                    {% endfor %}
+                        <div class="text-wrap">
+                            <div class="row align-items-start">
+                                <div class="col-8">
+                                    <h4>Egg Sandwich</h4>
+                                </div>
+                                <div class="col-4">
+                                    <h4 class="text-muted menu-price">$30</h4>
+                                </div>
+                            </div>
+                            <p>Meat Ball, Mie</p>
+                        </div>
+                    </div>
+                    <div class="menus d-flex align-items-center">
+                        <div class="menu-img rounded-circle">
+                            <img class="img-fluid" src="{% static "/img/breakfast-1.jpg" %}" alt="">
+                        </div>
+                        <div class="text-wrap">
+                            <div class="row align-items-start">
+                                <div class="col-8">
+                                    <h4>Egg Sandwich</h4>
+                                </div>
+                                <div class="col-4">
+                                    <h4 class="text-muted menu-price">$30</h4>
+                                </div>
+                            </div>
+                            <p>Meat Ball, Mie</p>
+                        </div>
+                    </div>
+                    <div class="menus d-flex align-items-center">
+                        <div class="menu-img rounded-circle">
+                            <img class="img-fluid" src="{% static "/img/breakfast-1.jpg" %}" alt="">
+                        </div>
+                        <div class="text-wrap">
+                            <div class="row align-items-start">
+                                <div class="col-8">
+                                    <h4>Egg Sandwich</h4>
+                                </div>
+                                <div class="col-4">
+                                    <h4 class="text-muted menu-price">$30</h4>
+                                </div>
+                            </div>
+                            <p>Meat Ball, Mie</p>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="col-lg-4 menu-wrap">
                     <div class="heading-menu">
                         <h3 class="text-center mb-5">Breakfast</h3>
                     </div>
-                    {% for i in dinner %}
-                        <div class="menus d-flex align-items-center">
-                            <div class="menu-img rounded-circle">
-                                <img class="img-fluid" src="{{ i.food_img }}" alt="">
-                            </div>
-                            <div class="text-wrap">
-                                <div class="row align-items-start">
-                                    <div class="col-8">
-                                        <h4>{{ i.food_name }}</h4>
-                                    </div>
-                                    <div class="col-4">
-                                        <h4 class="text-muted menu-price">${{ i.food_price }}</h4>
-                                    </div>
-                                </div>
-                                <p>{{ i.food_cooker }}</p>
-                            </div>
+                    <div class="menus d-flex align-items-center">
+                        <div class="menu-img rounded-circle">
+                            <img class="img-fluid" src="{% static "/img/breakfast-1.jpg" %}" alt="">
                         </div>
-                    {% endfor %}
+                        <div class="text-wrap">
+                            <div class="row align-items-start">
+                                <div class="col-8">
+                                    <h4>Egg Sandwich</h4>
+                                </div>
+                                <div class="col-4">
+                                    <h4 class="text-muted menu-price">$30</h4>
+                                </div>
+                            </div>
+                            <p>Meat Ball, Mie</p>
+                        </div>
+                    </div>
+                    <div class="menus d-flex align-items-center">
+                        <div class="menu-img rounded-circle">
+                            <img class="img-fluid" src="{% static "/img/breakfast-1.jpg" %}" alt="">
+                        </div>
+                        <div class="text-wrap">
+                            <div class="row align-items-start">
+                                <div class="col-8">
+                                    <h4>Egg Sandwich</h4>
+                                </div>
+                                <div class="col-4">
+                                    <h4 class="text-muted menu-price">$30</h4>
+                                </div>
+                            </div>
+                            <p>Meat Ball, Mie</p>
+                        </div>
+                    </div>
+                    <div class="menus d-flex align-items-center">
+                        <div class="menu-img rounded-circle">
+                            <img class="img-fluid" src="{% static "/img/breakfast-1.jpg" %}" alt="">
+                        </div>
+                        <div class="text-wrap">
+                            <div class="row align-items-start">
+                                <div class="col-8">
+                                    <h4>Egg Sandwich</h4>
+                                </div>
+                                <div class="col-4">
+                                    <h4 class="text-muted menu-price">$30</h4>
+                                </div>
+                            </div>
+                            <p>Meat Ball, Mie</p>
+                        </div>
+                    </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -596,7 +654,7 @@
                             </div>
                  
                             <div class="col-md-12 form-group">
-                            <textarea class="form-control" id="message" name="message" rows="6" placeholder="Your Message ..."></textarea>
+                                <textarea class="form-control" id="message" name="message" rows="6" placeholder="Your Message ..."></textarea>
                             </div>
                             <div class="col-md-12 text-center">
                                 <button class="btn btn-primary btn-shadow btn-lg" type="submit" name="submit">Send Message</button>
@@ -615,9 +673,7 @@
          	<div class="col-lg-4">
          		<div class="footer-widget pr-lg-5 pr-0">
          			<img src="{% static "/img/logo.png" %}" class="img-fluid footer-logo mb-3" alt="">
-	         		<p>
-                        You can find us in the following ways, get to know us in depth, and join us. Looking forward to your arrival!
-                    </p>
+	         		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et obcaecati quisquam id sit omnis explicabo voluptate aut placeat, soluta, nisi ea magni facere, itaque incidunt modi? Magni, et voluptatum dolorem.</p>
 	         		<nav class="nav nav-mastfoot justify-content-start">
 		                <a class="nav-link" href="#">
 		                	<i class="fab fa-facebook-f"></i>
@@ -651,7 +707,7 @@
          	<div class="col-lg-4">
          		<div class="footer-widget pl-lg-5 pl-0">
          			<h4>Newsletter</h4>
-	         		<p>If you have good suggestions for us, or you are not satisfied with the place please leave your mailbox! We will find your feedback soon!</p>
+	         		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
 	         		<form id="newsletter">
 						<div class="form-group">
 							<input type="email" class="form-control" id="emailNewsletter" aria-describedby="emailNewsletter" placeholder="Enter email">
@@ -662,6 +718,7 @@
          		
          	</div>
          	<div class="col-md-12 d-flex align-items-center">
+         		<p class="mx-auto text-center mb-0">Copyright &copy; 2019.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
          	</div>
             
         </div>

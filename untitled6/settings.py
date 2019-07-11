@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'show',
     'book',
+    "usersetting",
 ]
 
 MIDDLEWARE = [
@@ -88,7 +89,31 @@ DATABASES = {
         "USER":"root",
         "PASSWORD":"123456",
         "HOST":"127.0.0.1",
-        "OPTIONS":{'init_command':"SET default_storage_engine=INNODB;"}
+        "OPTIONS":{'init_command':"SET default_storage_engine=INNODB;foreign_key_checks = 0;"}
+    }
+}
+
+# session使用的存储方式
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+# 指明使用哪一个库保存session数据
+SESSION_CACHE_ALIAS = "session"
+
+# APPEND_SLASH=False
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1", # 指明使用redis的1号数据库
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            }
+        },
+    "session": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/2", # 指明使用redis的1号数据库
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
     }
 }
 
@@ -135,10 +160,37 @@ STATIC_URL = '/static/'
 # STATIC_ROOT = os.path.join(APP_PATH, 'static').replace('\\', '/')
 
 # 当然还有STATICFILES_DIRS变量
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR,"static")
-# ]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR,"static")
+]
+
+# 互亿验证码
+APIID = "C76968892"
+APIKEY = "d0804f8232bc8826a3d2b51f68e31c9e"
+
+# 图灵机器人
+USER_ID = "123456"
+API_KEY = "6ce6bb89636d47bcb871a9e97bb5c985"
+TULING_API = "http://openapi.tuling123.com/openapi/api/v2"
 # print(STATICFILES_DIRS)
 
 # MEDIA_URL = "/media/"
-STATIC_ROOT = os.path.join(BASE_DIR,"static")
+# STATIC_ROOT = os.path.join(BASE_DIR,"static")
+
+# LOGGING = {
+#     "version":1,
+#     "disable_existing_logger":False,
+#     "handlers":{
+#         "console":{
+#             "level":"DEBUG",
+#             "class":"logging.StreamHandler"
+#         },
+#     },
+#     "loggers":{
+#         "django.db.bankends":{
+#             "handlers":["console"],
+#             "propagate":True,
+#             "level":"DEBUG"
+#         }
+#     }
+# }

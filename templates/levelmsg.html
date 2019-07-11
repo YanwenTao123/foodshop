@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block levelmsg %}
+    <div class="container">
+        <table class="table table-condensed">
+        <thead>
+            <tr>
+                <td>邮箱</td>
+                <td>主题</td>
+                <td>提交时间</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in allMsg %}
+                <tr>
+                    <td>{{ i.email }}</td>
+                    <td>{{ i.topic }}</td>
+                    <td>{{ i.add_time }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+
+{% endblock %}
