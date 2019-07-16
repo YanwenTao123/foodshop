@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block passwordget %}
+    <div class="container">
+        <h2>Password Get</h2>
+
+        <p>
+          <button type="button" class="btn btn-primary btn-lg"><a href="{% url "forgetpasswordemail" %}">Email Get</a></button>
+          <button type="button" class="btn btn-default btn-lg"><a href="{% url "forgetpassword" %}">Phone Get</a></button>
+        </p>
+
+
+    </div>
+{% endblock %}

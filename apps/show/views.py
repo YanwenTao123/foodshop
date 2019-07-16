@@ -3,6 +3,7 @@ import json
 import random
 
 import requests
+from django.core.mail import send_mass_mail, send_mail
 from django.shortcuts import render, render_to_response, redirect
 from django.template import RequestContext
 
@@ -12,6 +13,8 @@ from book.forms import Form1, Form2, Form3
 from django.http import HttpResponse, HttpResponseRedirect,JsonResponse
 
 from untitled6.settings import TULING_API,API_KEY,USER_ID,APIID,APIKEY
+from show.models import Email
+from plug.email import EmailHandler
 
 
 # Create your views here.
@@ -336,3 +339,60 @@ def practice(request):
     username = UserProfile.inputPhone("16620064525")
     print(type(username))
     return HttpResponse(username)
+
+def send_my_mail(request):
+    """发单封验证码邮件"""
+    title = "阿里offer"
+    message = "恭喜您 成为我们公司CEO"
+    email_from = "1241081280@qq.com"
+    recs = ["m18867319705@163.com"]
+    email_type = "普通邮件"
+    #发送邮件
+    # if request.method == "POST":
+    #   email_type = request.POST.get("email_type","")
+    random_url = EmailHandler.send_register_email(email_title=title,email_body=message,email_from=email_from,email_recv=recs,email_type=email_type).get("random_url")
+    request.session.set_expiry(60)
+    request.session["random_str"] = random_url
+    # send_mail(title, message, email_from, recs)
+    return HttpResponseRedirect("/actionmail/")
+    # return render(request,"actionform.html",locals())
+
+# 多封普通邮件的发送
+def send_emailss(req):
+    title1 = "腾讯offer"
+    message1 = "恭喜您 被骗了"
+    email_from = "1625211623@qq.com"
+    title2 = "这是一封挑事的邮件"
+    message2 = "大哥大哥别杀我"
+    recs1 = ["17694871425@163.com",
+            "569677884@qq.com",
+            "ichenyouzhi@163.com"]
+    recs2 = ["17694871425@163.com",
+             "569677884@qq.com",
+             "ichenyouzhi@163.com",
+             "m18742863100@163.com"]
+    senders1 = (title1, message1, email_from, recs1)
+    senders2 = (title2, message2, email_from, recs2)
+    send_mass_mail((senders1, senders2), fail_silently=False)
+    return HttpResponse("OK")
+
+def actionmail(request,action_id):
+    """邮件验证码验证处理"""
+    if request.method == "POST":
+        print('request.session.get("random_str",""):',request.session.get("random_str",""))
+        if request.session.get("random_str",""):
+            v_code = request.POST.get("action","")
+            vcode = Email.outputVcode(action_id)
+            if vcode == v_code:
+                return  HttpResponse("验证成功")
+            else:
+                return HttpResponse("验证失败")
+    else:
+        return HttpResponseRedirect("/actionmail/")
+
+def actionmail1(request):
+     random_str = request.session.get("random_str","")
+     print("random_str:",random_str)
+     return render(request,"actionform.html",locals())
+
+

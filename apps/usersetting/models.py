@@ -28,6 +28,12 @@ class UserProfile(models.Model):
         return users.username
 
     @staticmethod
+    def inputEmail(email):
+        """输出手机号对应的username"""
+        users = UserProfile.objects.get(email=email)
+        return users.username
+
+    @staticmethod
     def modifyUser(user,pwd):
         """修改个人设置"""
 
@@ -63,6 +69,13 @@ class UserProfile(models.Model):
     def pwdModify(phone,pwd):
         """修改手机号对应密码"""
         obj = UserProfile.objects.get(phone=phone)
+        obj.pwd = pwd
+        obj.save()
+
+    @staticmethod
+    def pwdModifyByEmail(email, pwd):
+        """修改手机号对应密码"""
+        obj = UserProfile.objects.get(email=email)
         obj.pwd = pwd
         obj.save()
 

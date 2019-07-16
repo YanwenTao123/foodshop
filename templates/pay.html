@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block pay %}
+    <div class="container">
+        <form action="/page1/" method="POST">
+            {% csrf_token %}
+            <input type="text" name="money">
+            <input type="submit" value="去支付" />
+        </form>
+    </div>
+{% endblock %}
+
+
+
